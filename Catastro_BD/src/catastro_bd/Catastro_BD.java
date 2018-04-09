@@ -50,11 +50,11 @@ public class Catastro_BD {
                     + "Pulsa 7 Para salir \n");
             switch (op) {
                 case 1:
-
-                    break;
-                case 2:
                     String dato = ES.leeDeTeclado("Abcomu");
                     listaTabla("PROVINCIAS", "COMUNIDAD", dato);
+                    break;
+                case 2:
+
                     break;
                 case 3:
 
