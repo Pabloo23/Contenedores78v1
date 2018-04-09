@@ -54,13 +54,22 @@ public class Catastro_BD {
                     listaTabla("PROVINCIAS", "COMUNIDAD", dato);
                     break;
                 case 2:
-
+                    
                     break;
                 case 3:
 
                     break;
                 case 4:
-
+                    listaSelect("select c.nombre comunidad, pv.provincia provincia, count(pb.idpoblacion) pueblos from "
+                            + "comunidades c, provincias pv, poblaciones pb "
+                            + "where c.codigo = pv.comunidad and pv.idprovincia = pb.idprovincia "
+                            + "group by c.nombre, pv.provincia "
+                            + "union "
+                            + "select c.nombre comunidad, '0 Numero total de pueblos' provincia, count(pb.idpoblacion) pueblos from "
+                            + "comunidades c, provincias pv, poblaciones pb "
+                            + "where c.codigo = pv.comunidad and pv.idprovincia = pb.idprovincia "
+                            + "group by c.nombre "
+                            + "order by comunidad, provincia ");
                     break;
                 case 5:
 
@@ -269,7 +278,39 @@ public class Catastro_BD {
         }
 
     }
+    //----------------------------------------------------------------------------------
+      static void listaSelect(String select) {
 
+        Connection conn = null;
+        ResultSet rset;
+
+        try {
+            conn = conectaOracle();
+            Statement sentencia = conn.createStatement();
+
+            rset = sentencia.executeQuery(select);
+
+            while (rset.next()) {
+                int i = 1;
+                while (i <= rset.getMetaData().getColumnCount()) {
+
+                    System.out.print(rset.getString(i) + " ");
+                    i++;
+
+                }
+                // System.out.println(rset.getString(1)+" -> "+rset.getString(2));
+                System.out.println("");
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Error -> Conexión fallida" + ex);
+        }
+
+    }
+    
+      //-------------------------------------------------------
+    
     static void altaMunicipio(String tabla1, String tabla2) {
 
     }
