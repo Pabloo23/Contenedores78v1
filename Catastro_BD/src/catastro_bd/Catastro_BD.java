@@ -45,7 +45,7 @@ public class Catastro_BD {
                     + "Pulsa 3 Cambiar Municipio de Provincia\n"
                     + "Pulsa 4 Listado nº de Provincias y Municipios por Comunidad\n"
                     + "Pulsa 5 Guardar cada comunidad con sus provincias y pueblos\n"
-                    + "en un fichero de texto: Comunidad.txt"
+                    + "en un fichero de texto: Comunidad.txt\n"
                     + "Pulsa 6 Obtener (Provincias y Comunidad) a partir de una poblacion \n"
                     + "Pulsa 7 Para salir \n");
             switch (op) {
@@ -312,7 +312,7 @@ public class Catastro_BD {
       //-------------------------------------------------------
     
     static void altaMunicipio(String tabla1, String tabla2) {
-
+       
     }
 
 }//class
