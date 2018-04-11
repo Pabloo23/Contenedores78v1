@@ -26,12 +26,15 @@ import utils78.ES;
 public class Catastro_BD {
 
     static String ruta = "src/datos/";
-
+    
     public static void main(String[] args) {
         /*cargaTabla2("COMUNIDADES", "comunidades.txt");
         cargaTabla2("PROVINCIAS", "provincias.txt");
         cargaTabla2("POBLACIONES", "poblaciones.txt");*/
+       operaBD operaciones = new operaBD("jdbc:oracle:thin:@localhost:1521:XE",
+               "catastro", "catastro", "oracle.jdbc.driver.OracleDriver");
         menu();
+        
     }//main
 
     /*-------------------------------------------*/
@@ -84,7 +87,7 @@ public class Catastro_BD {
     }//menu
 
     //----------------------------------------------
-    static Connection conectaOracle() {
+    /*static Connection conectaOracle() {
 
         String cadenaConexion
                 = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -93,8 +96,8 @@ public class Catastro_BD {
         Connection conn = null;
         try {
             //1.- Cargar el driver JDBC....
-            /*DriverManager.registerDriver(
-                    new oracle.jdbc.driver.OracleDriver());*/
+            DriverManager.registerDriver(
+                    new oracle.jdbc.driver.OracleDriver());
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
             //2.- Obtener la conexión.....
@@ -109,7 +112,8 @@ public class Catastro_BD {
 
         return conn;
 
-    }//conectaOracle
+    }*///conectaOracle
+
     //----------------------------------
 
     static void cargaTabla(String tabla, String fichero) {
