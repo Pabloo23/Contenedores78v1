@@ -26,19 +26,19 @@ import utils78.ES;
 public class Catastro_BD {
 
     static String ruta = "src/datos/";
-    
+
     public static void main(String[] args) {
         /*cargaTabla2("COMUNIDADES", "comunidades.txt");
         cargaTabla2("PROVINCIAS", "provincias.txt");
         cargaTabla2("POBLACIONES", "poblaciones.txt");*/
-       operaBD operaciones = new operaBD("jdbc:oracle:thin:@localhost:1521:XE",
-               "catastro", "catastro", "oracle.jdbc.driver.OracleDriver");
-        menu();
-        
+        OperaBD operaciones = new OperaBD("jdbc:oracle:thin:@localhost:1521:XE",
+                "catastro", "catastro", "oracle.jdbc.driver.OracleDriver");
+        menu(operaciones);
+
     }//main
 
     /*-------------------------------------------*/
-    static void menu() {
+    static void menu(OperaBD operaciones) {
         int op;
 
         do {
@@ -54,13 +54,13 @@ public class Catastro_BD {
             switch (op) {
                 case 1:
                     String dato = ES.leeDeTeclado("Abcomu");
-                    listaTabla("PROVINCIAS", "COMUNIDAD", dato);
+                    listaTabla("PROVINCIAS", "COMUNIDAD", dato,operaciones);
                     break;
                 case 2:
                     
                     break;
                 case 3:
-
+                    
                     break;
                 case 4:
                     listaSelect("select c.nombre comunidad, pv.provincia provincia, count(pb.idpoblacion) pueblos from "
@@ -72,13 +72,17 @@ public class Catastro_BD {
                             + "comunidades c, provincias pv, poblaciones pb "
                             + "where c.codigo = pv.comunidad and pv.idprovincia = pb.idprovincia "
                             + "group by c.nombre "
-                            + "order by comunidad, provincia ");
+                            + "order by comunidad, provincia ",operaciones);
                     break;
                 case 5:
 
                     break;
                 case 6:
-
+                    String pueblo = ES.leeDeTeclado("Nombre del pueblo?");
+                    pueblo = pueblo.toUpperCase();
+                    listaSelect("select poblacion ||'->',provincia,nombre from comunidades c, provincias pv, poblaciones pb "
+                            + "where c.codigo=pv.comunidad and pv.idprovincia = pb.idprovincia and Upper(poblacion) ='" + pueblo + "'",
+                            operaciones);
                     break;
 
             }//switch
@@ -113,17 +117,15 @@ public class Catastro_BD {
         return conn;
 
     }*///conectaOracle
-
     //----------------------------------
-
-    static void cargaTabla(String tabla, String fichero) {
+    static void cargaTabla(String tabla, String fichero,OperaBD operaciones) {
 
         FileReader fr = null;
         Connection conn = null;
         Scanner scl = null, sc = null;
         String linea = "", codigo, nombre, insert = "";
         try {
-            conn = conectaOracle();
+            conn = operaciones.conectaOracle();
             Statement sentencia = conn.createStatement();
             // Procesamos el fichero..............
             fr = new FileReader(ruta + fichero);
@@ -163,7 +165,7 @@ public class Catastro_BD {
 
     /*------------------------------------*/
     //----------------------------------
-    static void cargaTabla2(String tabla, String fichero) {
+    static void cargaTabla2(String tabla, String fichero,OperaBD operaciones) {
 
         FileReader fr = null;
         Connection conn = null;
@@ -173,7 +175,7 @@ public class Catastro_BD {
         ArrayList<String> types = new ArrayList();
         ResultSet rset;
         try {
-            conn = conectaOracle();
+            conn = operaciones.conectaOracle();
             Statement sentencia = conn.createStatement();
             // Procesamos el fichero..............
             fr = new FileReader(ruta + fichero);
@@ -228,13 +230,13 @@ public class Catastro_BD {
     }//carga TAbla
 
     //-----------------------------------------------
-    static void listaTabla(String tabla) {
+    static void listaTabla(String tabla,OperaBD operaciones) {
 
         Connection conn = null;
         ResultSet rset;
 
         try {
-            conn = conectaOracle();
+            conn = operaciones.conectaOracle();
             Statement sentencia = conn.createStatement();
 
             rset = sentencia.executeQuery("select * from " + tabla);
@@ -252,47 +254,51 @@ public class Catastro_BD {
     }
 
     //-------------------------------------------------
-    static void listaTabla(String tabla, String columna, String dato) {
+    static void listaTabla(String tabla, String columna, String dato, OperaBD operaciones) {
 
         Connection conn = null;
         ResultSet rset;
 
         try {
-            conn = conectaOracle();
-            Statement sentencia = conn.createStatement();
+            /*conn = conectaOracle();
+            Statement sentencia= conn.createStatement();
+            
+            rset=sentencia.executeQuery("select * from "+tabla+
+                                        " where "+columna+"='"+dato+"'");*/
 
-            rset = sentencia.executeQuery("select * from " + tabla
+            operaciones.lanzaSql("select * from " + tabla
                     + " where " + columna + "='" + dato + "'");
+            rset = operaciones.datos;
+
+            int numColum = rset.getMetaData().getColumnCount();
 
             while (rset.next()) {
-                int i = 1;
-                while (i <= rset.getMetaData().getColumnCount()) {
-
+                //System.out.println(rset.getString(1)+"->"+rset.getString(2));
+                for (int i = 1; i <= numColum; i++) {
                     System.out.print(rset.getString(i) + " ");
-                    i++;
-
                 }
-                // System.out.println(rset.getString(1)+" -> "+rset.getString(2));
-                System.out.println("");
-
+                System.out.println();
             }
-            conn.close();
+
+            //conn.close();
+            //operaciones.close();
         } catch (SQLException ex) {
-            System.out.println("Error -> Conexión fallida" + ex);
+            System.out.println("Error-> conexión fallida" + ex);
         }
 
     }
+
     //----------------------------------------------------------------------------------
-      static void listaSelect(String select) {
+    static void listaSelect(String select,OperaBD operaciones) {
 
         Connection conn = null;
         ResultSet rset;
 
         try {
-            conn = conectaOracle();
-            Statement sentencia = conn.createStatement();
-
-            rset = sentencia.executeQuery(select);
+            /*conn = conectaOracle();
+            Statement sentencia = conn.createStatement();*/
+            operaciones.lanzaSql(select);
+            rset = operaciones.datos;
 
             while (rset.next()) {
                 int i = 1;
@@ -306,17 +312,18 @@ public class Catastro_BD {
                 System.out.println("");
 
             }
-            conn.close();
+            //conn.close();
         } catch (SQLException ex) {
             System.out.println("Error -> Conexión fallida" + ex);
         }
 
     }
-    
-      //-------------------------------------------------------
-    
-    static void altaMunicipio(String tabla1, String tabla2) {
-       
-    }
 
+    //-------------------------------------------------------
+    
+    static void guardaFicheroBD(OperaBD operaciones){
+    
+        operaciones.lanzaSql(ruta);
+    
+    }
 }//class
