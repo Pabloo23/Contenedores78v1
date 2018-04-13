@@ -34,10 +34,18 @@ public class Catastro_BD {
         cargaTabla2("PROVINCIAS", "provincias.txt");
         cargaTabla2("POBLACIONES", "poblaciones.txt");*/
  /* objeto operaBD---------------------*/
-        OperaBD operaciones = new OperaBD("jdbc:oracle:thin:@localhost:1521:XE",
+        OperaBD operacionesO = new OperaBD("jdbc:oracle:thin:@localhost:1521:XE",
                 "oracle.jdbc.driver.OracleDriver",
                 "catastro", "catastro");
-        menu(operaciones);
+        
+        OperaBD operacionesM = new OperaBD("jdbc:mysql://localhost/catastro",
+                "com.mysql.jdbc.Driver",
+                "catastro", "catastro");
+        
+        cargaTabla2("COMUNIDADES", "comunidades.txt",operacionesM);
+        cargaTabla2("PROVINCIAS", "provincias.txt",operacionesM);
+        cargaTabla2("POBLACIONES", "poblaciones.txt",operacionesM);
+        menu(operacionesM);
     }//main
     //--------------------------------------------
     //------------------------------------------------
@@ -69,7 +77,7 @@ public class Catastro_BD {
                             + " where COMUNIDAD='" + comu + "'");
                     operaciones.listaSelect();
 
-                    //listaTabla("PROVINCIAS","COMUNIDAD",comu,operaciones);
+                    //listaTabla("PROVINCIAS","COMUNIDAD",comu,operacionesO);
                     break;
                 case 2:
                     operaciones.insertaFila("POBLACIONES");
@@ -88,7 +96,7 @@ public class Catastro_BD {
                             + "comunidades c, provincias pv, poblaciones pb "
                             + "where c.codigo= pv.comunidad and pv.idprovincia=pb.idprovincia "
                             + "group by c.nombre "
-                            + "order by comunidad,provincia");//,operaciones);
+                            + "order by comunidad,provincia");//,operacionesO);
                     operaciones.listaSelect();
 
                     break;
@@ -102,7 +110,7 @@ public class Catastro_BD {
                             + "where c.codigo=pv.comunidad and pv.idprovincia = pb.idprovincia and Upper(poblacion) ='" + pueblo + "'");
                     /*listaSelect("select poblacion ||'->',provincia,nombre from comunidades c, provincias pv, poblaciones pb " +
                                         "where c.codigo=pv.comunidad and pv.idprovincia = pb.idprovincia and Upper(poblacion) ='"+pueblo+"'",
-                                        operaciones);*/
+                                        operacionesO);*/
                     operaciones.listaSelect();
 
                     break;
@@ -209,7 +217,7 @@ public class Catastro_BD {
     }
 
     /*------------------------------------------- 
-    static void listaTabla(String tabla, String columna, String dato, OperaBD operaciones ){
+    static void listaTabla(String tabla, String columna, String dato, OperaBD operacionesO ){
         //Connection conn =null;
         ResultSet rset;
             
@@ -220,9 +228,9 @@ public class Catastro_BD {
             rset=sentencia.executeQuery("select * from "+tabla+
                                         " where "+columna+"='"+dato+"'");
             
-            operaciones.lanzaSql("select * from "+tabla+
+            operacionesO.lanzaSql("select * from "+tabla+
                                         " where "+columna+"='"+dato+"'");
-            rset=operaciones.datos;
+            rset=operacionesO.datos;
             
             
             int numColum =rset.getMetaData().getColumnCount();
@@ -244,7 +252,7 @@ public class Catastro_BD {
         
     }
     
-    static void listaSelect(String select,OperaBD operaciones){
+    static void listaSelect(String select,OperaBD operacionesO){
         Connection conn =null;
         ResultSet rset;
             
@@ -255,8 +263,8 @@ public class Catastro_BD {
             
             rset=sentencia.executeQuery(select);
             rset=resultadoConsulta(select);
-            operaciones.lanzaSql(select);
-            rset=operaciones.datos;
+            operacionesO.lanzaSql(select);
+            rset=operacionesO.datos;
             
             int numColum =rset.getMetaData().getColumnCount();
             while(rset.next()){
@@ -321,7 +329,7 @@ public class Catastro_BD {
                 rsProv = operaciones.lanzaSql("select IDPROVINCIA,PROVINCIA from PROVINCIAS"
                         + " where COMUNIDAD='" + codigo + "'");
 
-                //rst=operaciones.datos;
+                //rst=operacionesO.datos;
                 while (rsProv.next()) {
                     String provincia = rsProv.getString("PROVINCIA");
                     String idprovincia = rsProv.getString("IDPROVINCIA");
@@ -333,7 +341,7 @@ public class Catastro_BD {
 
                     while (rsPob.next()) {
 
-                        //rset=operaciones.datos;
+                        //rset=operacionesO.datos;
                         String poblacion = rsPob.getString("POBLACION");
                         bw.write(poblacion);
                         bw.newLine();
