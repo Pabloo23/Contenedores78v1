@@ -39,7 +39,7 @@ public class OperaBD {
     String driver;
     String usuario;
     String contraseña;
-    Connection conn;
+    Connection conn=null;
     //....sql
     String sentenciaSql;
 
@@ -55,8 +55,10 @@ public class OperaBD {
         this.sentenciaSql = sentenciaSql;
     }
    //----------------------------------------------------- 
-    public void lanzaSql(String sql){
+    public ResultSet lanzaSql(String sql){
+        //ResultSet rset = null;
         try {
+            if(conn==null)
             conn=conectaOracle();
             
             Statement sentencia= conn.createStatement();
@@ -76,7 +78,7 @@ public class OperaBD {
         } catch (SQLException ex) {
             System.out.println("Error en lanzaSql: "+ex);
         }
-        
+        return datos;
     }
     //---------------------------------------------
     public void close(){

@@ -1,0 +1,320 @@
+
+Lugo
+Abadín
+Alfoz
+Antas de Ulla
+Baleira
+Baralla
+Barreiros
+Becerreá
+Begonte
+Bóveda
+Burela
+Carballedo
+Castro de Rei
+Castroverde
+Cervantes
+Cervo
+Chantada
+Corgo
+Cospeito
+Folgoso do Courel
+Fonsagrada
+Foz
+Friol
+Guitiriz
+Guntín
+Incio
+Láncara
+Lourenzá
+Lugo
+Meira
+Mondoñedo
+Monforte de Lemos
+Monterroso
+Muras
+Navia de Suarna
+Negueira de Muñiz
+Nogais
+Ourol
+Outeiro de Rei
+Palas de Rei
+Pantón
+Paradela
+Páramo
+Pastoriza
+Pedrafita do Cebreiro
+Pobra do Brollón
+Pol
+Pontenova
+Portomarín
+Quiroga
+Rábade
+Ribadeo
+Ribas de Sil
+Ribeira de Piquín
+Riotorto
+Samos
+Sarria
+Saviñao
+Sober
+Taboada
+Trabada
+Triacastela
+Valadouro
+Vicedo
+Vilalba
+Viveiro
+Xermade
+Xove
+A Coruña
+Abegondo
+Ames
+Aranga
+Ares
+Arteixo
+Arzúa
+Baña
+Bergondo
+Betanzos
+Boimorto
+Boiro
+Boqueixón
+Brión
+Cabana de Bergantiños
+Cabanas
+Camariñas
+Cambre
+Capela
+Carballo
+Cariño
+Carnota
+Carral
+Cedeira
+Cee
+Cerceda
+Cerdido
+Cesuras
+Coirós
+Corcubión
+Coristanco
+Coruña
+Culleredo
+Curtis
+Dodro
+Dumbría
+Fene
+Ferrol
+Fisterra
+Frades
+Irixoa
+Laracha
+Laxe
+Lousame
+Malpica de Bergantiños
+Maón
+Mazaricos
+Melide
+Mesía
+Miño
+Moeche
+Monfero
+Mugardos
+Muros
+Muxía
+Narón
+Neda
+Negreira
+Noia
+Oleiros
+Ordes
+Oroso
+Ortigueira
+Outes
+Oza dos Ríos
+Paderne
+Padrón
+Pino
+Pobra do Caramiñal
+Ponteceso
+Pontedeume
+Pontes de García Rodríguez
+Porto do Son
+Rianxo
+Ribeira
+Rois
+Sada
+San Sadurniño
+Santa Comba
+Santiago de Compostela
+Santiso
+Sobrado
+Somozas
+Teo
+Toques
+Tordoia
+Touro
+Trazo
+Val do Dubra
+Valdoviño
+Vedra
+Vilarmaior
+Vilasantar
+Vimianzo
+Zas
+Ourense
+Carballiño
+Cartelle
+Castrelo de Miño
+Castrelo do Val
+Castro Caldelas
+Celanova
+Cenlle
+Chandrexa de Queixa
+Coles
+Cortegada
+Cualedro
+Entrimo
+Esgos
+Gomesende
+Gudiña
+Irixo
+Larouco
+Laza
+Leiro
+Lobeira
+Lobios
+Maceda
+Manzaneda
+Maside
+Melón
+Merca
+Mezquita
+Montederramo
+Monterrei
+Muíños
+Nogueira de Ramuín
+Oímbra
+Ourense
+Paderne de Allariz
+Padrenda
+Parada de Sil
+Pereiro de Aguiar
+Peroxa
+Petín
+Piñor
+Pobra de Trives
+Pontedeva
+Porqueira
+Punxín
+Quintela de Leirado
+Rairiz de Veiga
+Ramirás
+Ribadavia
+Riós
+Rúa
+Rubiá
+San Amaro
+San Cibrao das Viñas
+San Cristovo de Cea
+San Xoán de Río
+Sandiás
+Sarreaus
+Taboadela
+Teixeira
+Toén
+Trasmiras
+Veiga
+Verea
+Verín
+Viana do Bolo
+Vilamarín
+Vilamartín de Valdeorras
+Vilar de Barrio
+Vilar de Santos
+Vilardevós
+Vilariño de Conso
+Xinzo de Limia
+Xunqueira de Ambía
+Xunqueira de Espadanedo
+Allariz
+Amoeiro
+Arnoia
+Avión
+Baltar
+Bande
+Baños de Molgas
+Barbadás
+Barco de Valdeorras
+Beade
+Beariz
+Blancos
+Boborás
+Bola
+Bolo
+Calvos de Randín
+Carballeda de Avia
+Carballeda de Valdeorras
+Pontevedra
+Agolada
+Arbo
+Baiona
+Barro
+Bueu
+Caldas de Reis
+Cambados
+Campo Lameiro
+Cangas
+Cañiza
+Catoira
+Cerdedo
+Cotobade
+Covelo
+Crecente
+Cuntis
+Dozón
+Estrada
+Forcarei
+Fornelos de Montes
+Gondomar
+Grove
+Guarda
+Illa de Arousa
+Lalín
+Lama
+Marín
+Meaño
+Meis
+Moaña
+Mondariz
+Mondariz-Balneario
+Moraña
+Mos
+Neves
+Nigrán
+Oia
+Pazos de Borbén
+Poio
+Ponte Caldelas
+Ponteareas
+Pontecesures
+Pontevedra
+Porriño
+Portas
+Redondela
+Ribadumia
+Rodeiro
+Rosal
+Salceda de Caselas
+Salvaterra de Miño
+Sanxenxo
+Silleda
+Soutomaior
+Tomiño
+Tui
+Valga
+Vigo
+Vila de Cruces
+Vilaboa
+Vilagarcía de Arousa
+Vilanova de Arousa
