@@ -42,9 +42,9 @@ public class Catastro_BD {
                 "com.mysql.jdbc.Driver",
                 "catastro", "catastro");
         
-        cargaTabla2("COMUNIDADES", "comunidades.txt",operacionesM);
+        /*cargaTabla2("COMUNIDADES", "comunidades.txt",operacionesM);
         cargaTabla2("PROVINCIAS", "provincias.txt",operacionesM);
-        cargaTabla2("POBLACIONES", "poblaciones.txt",operacionesM);
+        cargaTabla2("POBLACIONES", "poblaciones.txt",operacionesM);*/
         menu(operacionesM);
     }//main
     //--------------------------------------------
@@ -142,11 +142,11 @@ public class Catastro_BD {
                 scl = new Scanner(linea);
                 scl.useDelimiter(",");
 
-                //sentencia.executeQuery("select * from "+tabla);
-                rset = sentencia.executeQuery("select data_type from user_tab_columns "
-                        + "where table_name='" + tabla + "'");
-                while (rset.next()) {
-                    types.add(rset.getString("data_type"));
+                rset = sentencia.executeQuery("select * from "+tabla);
+                /*rset = sentencia.executeQuery("select data_type from user_tab_columns "
+                        + "where table_name='" + tabla + "'");*/
+                for (int i =1 ; i<=rset.getMetaData().getColumnCount();i++) {
+                    types.add(rset.getMetaData().getColumnTypeName(i).toUpperCase());
 
                 }
 
@@ -155,7 +155,7 @@ public class Catastro_BD {
                 int i = 0;
                 while (scl.hasNext()) {
                     campo = scl.next();
-                    if (types.get(i).equalsIgnoreCase("VARCHAR2")) {
+                    if (types.get(i).startsWith("VARCHAR")) {
                         insert += "'" + campo + "',";
                     } else {
                         insert += campo + ",";

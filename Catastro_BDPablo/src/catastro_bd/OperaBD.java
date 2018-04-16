@@ -154,13 +154,14 @@ public class OperaBD {
             ArrayList<String> types=new ArrayList();
             ResultSet rset;
            
-            lanzaSql("select * from user_tab_columns " +
-                    "where table_name='"+tabla+"'");
+            /*lanzaSql("select * from user_tab_columns " +
+                    "where table_name='"+tabla+"'");*/
             //rset=operaciones.datos;
-            
+            datos = conn.getMetaData().getColumns(null, null, tabla, null);
+  
             while (datos.next()){
-                   campo=ES.leeDeTeclado(datos.getString("COLUMN_NAME"));
-                   if( (datos.getString("data_type")).equalsIgnoreCase("VARCHAR2") )
+                   campo=ES.leeDeTeclado(datos.getString("COLUMN_NAME"));//4
+                   if( (datos.getString("DATA_TYPE")).startsWith("VARCHAR") )//6
                        insert+="'"+campo+"',";
                     else insert+=campo+",";
                         }
