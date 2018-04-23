@@ -7,27 +7,27 @@ package contenedores78;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-import javax.swing.border.Border;
 
 /**
  *
  * @author Pablo
  */
-public class Contenedores78 extends JFrame{
+public class Contenedores78 extends JFrame implements ActionListener{
 
     /**
      * @param args the command line arguments
      */
+    JButton bJFrame;
     public static void main(String[] args) {
         // TODO code application logic here
         Contenedores78 miVentana = new Contenedores78("Probando contenedores");
@@ -58,12 +58,13 @@ public class Contenedores78 extends JFrame{
         
         
         
-        JButton bJFrame = new JButton(" Ejemplo Jframe ");
+        bJFrame = new JButton(" Ejemplo Jframe ");
+        bJFrame.addActionListener(this);
         JButton bJDialog = new JButton(" Ejemplo JDialog ");
-        JButton bJPanel = new JButton(" Ejemplo Jframe ");
-        JButton bJScrollp = new JButton(" Ejemplo Jframe ");
-        JButton bJSplitp = new JButton(" Ejemplo Jframe ");
-        JButton bJTabbedp = new JButton(" Ejemplo Jframe ");
+        JButton bJPanel = new JButton(" Ejemplo JPanel ");
+        JButton bJScrollp = new JButton(" Ejemplo JScroll ");
+        JButton bJSplitp = new JButton(" Ejemplo JSplit ");
+        JButton bJTabbedp = new JButton(" Ejemplo JTabbed ");
         
         centro.add(bJFrame);
         centro.add(bJDialog);
@@ -78,7 +79,33 @@ public class Contenedores78 extends JFrame{
         cpane.add(norte, BorderLayout.NORTH);
         cpane.add(centro, BorderLayout.CENTER);
         cpane.add(sur, BorderLayout.SOUTH);
+        
+        /*bJFrame.addActionListener((new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EjemploJFrame();
+            }
+        }));*/
+
+        
+        
+        //panel sur
+        JButton bJDeskTop = new JButton(" Ejemplo JDeskTopPane ");
+        JButton bJToolBar = new JButton(" Ejemplo JToolBar ");
+        
+        sur.add(bJDeskTop);
+        sur.add(bJToolBar);
+        
+    }//constructor
+            @Override
+    public void actionPerformed(ActionEvent e) {
+        String textoB = e.getActionCommand();
+        JButton boton = (JButton)e.getSource();
+        
+        if(boton==bJFrame){
+        EjemploJFrame ventana = new EjemploJFrame();
+        ventana.setVisible(true);
+        }
     }
-    
     
 }
