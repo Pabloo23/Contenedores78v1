@@ -28,6 +28,11 @@ public class Contenedores78 extends JFrame implements ActionListener{
      * @param args the command line arguments
      */
     JButton bJFrame;
+    JButton bJDialog;
+    JButton bJPanel;
+    JButton bJScrollp;
+    JButton bJSplitp;
+    JButton bJTabbedp;
     public static void main(String[] args) {
         // TODO code application logic here
         Contenedores78 miVentana = new Contenedores78("Probando contenedores");
@@ -59,12 +64,18 @@ public class Contenedores78 extends JFrame implements ActionListener{
         
         
         bJFrame = new JButton(" Ejemplo Jframe ");
+        bJFrame.setName("bJFrame");
         bJFrame.addActionListener(this);
-        JButton bJDialog = new JButton(" Ejemplo JDialog ");
-        JButton bJPanel = new JButton(" Ejemplo JPanel ");
-        JButton bJScrollp = new JButton(" Ejemplo JScroll ");
-        JButton bJSplitp = new JButton(" Ejemplo JSplit ");
-        JButton bJTabbedp = new JButton(" Ejemplo JTabbed ");
+        bJDialog = new JButton(" Ejemplo JDialog ");
+        bJDialog.setName("bJDialog");
+        bJPanel = new JButton(" Ejemplo JPanel ");
+        bJPanel.setName("bJPanel");
+        bJScrollp = new JButton(" Ejemplo JScroll ");
+        bJScrollp.setName("bJScrollp");
+        bJSplitp = new JButton(" Ejemplo JSplit ");
+        bJSplitp.setName("bJSplitp");
+        bJTabbedp = new JButton(" Ejemplo JTabbed ");
+        bJTabbedp.setName("bJTabbedp");
         
         centro.add(bJFrame);
         centro.add(bJDialog);
@@ -102,10 +113,29 @@ public class Contenedores78 extends JFrame implements ActionListener{
         String textoB = e.getActionCommand();
         JButton boton = (JButton)e.getSource();
         
-        if(boton==bJFrame){
-        EjemploJFrame ventana = new EjemploJFrame();
-        ventana.setVisible(true);
+        switch(boton.getName()){
+        
+            case "bJFrame":
+                EjemploJFrame ventana = new EjemploJFrame();
+                ventana.setVisible(true);
+                break;
+            case "bJDialog":
+                break;
+            
+            case "bJPanel":
+                break;
+                
+            case "bJScrollp":
+                break;
+                
+            case "bJSplitp":
+                break;
+                
+            case "bJTabbedp":
+                break;
+            
         }
+ 
     }
     
 }
