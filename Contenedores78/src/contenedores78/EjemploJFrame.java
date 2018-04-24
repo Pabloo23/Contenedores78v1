@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
@@ -20,9 +21,17 @@ public class EjemploJFrame extends JFrame{
     public EjemploJFrame(){
         setTitle("Resultado del boton JFrame");
         Container cpane1 = getContentPane();
-        cpane1.add(new JLabel(" Contenedor JFrame "),BorderLayout.NORTH);
-        cpane1.add(new JTextArea("Ejemplo de JFrame....", 10, 20), BorderLayout.CENTER);
+        JPanel panelN = new JPanel();
+        JPanel panelC = new JPanel();
+        
+        
+        cpane1.add(panelN,BorderLayout.NORTH);
+        cpane1.add(panelC,BorderLayout.CENTER);
+        panelN.add(new JLabel(" Contenedor JFrame "),BorderLayout.NORTH);
+        panelC.add(new JTextArea("Ejemplo de JFrame....", 10, 20), BorderLayout.CENTER);
         pack();
+        //pone la ventana en el centro de la pantalla
+        setLocationRelativeTo(null);
                 
     }
 }

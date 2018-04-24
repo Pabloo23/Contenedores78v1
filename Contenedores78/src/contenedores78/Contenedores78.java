@@ -33,6 +33,7 @@ public class Contenedores78 extends JFrame implements ActionListener{
     JButton bJScrollp;
     JButton bJSplitp;
     JButton bJTabbedp;
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Contenedores78 miVentana = new Contenedores78("Probando contenedores");
@@ -68,8 +69,10 @@ public class Contenedores78 extends JFrame implements ActionListener{
         bJFrame.addActionListener(this);
         bJDialog = new JButton(" Ejemplo JDialog ");
         bJDialog.setName("bJDialog");
+        bJDialog.addActionListener(this);
         bJPanel = new JButton(" Ejemplo JPanel ");
         bJPanel.setName("bJPanel");
+        bJPanel.addActionListener(this);
         bJScrollp = new JButton(" Ejemplo JScroll ");
         bJScrollp.setName("bJScrollp");
         bJSplitp = new JButton(" Ejemplo JSplit ");
@@ -112,17 +115,22 @@ public class Contenedores78 extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String textoB = e.getActionCommand();
         JButton boton = (JButton)e.getSource();
+        Container ventana;
         
         switch(boton.getName()){
         
             case "bJFrame":
-                EjemploJFrame ventana = new EjemploJFrame();
+                ventana = new EjemploJFrame();
                 ventana.setVisible(true);
                 break;
             case "bJDialog":
+                ventana = new EjemploJDialog(this,true);
+                ventana.setVisible(true);
                 break;
             
             case "bJPanel":
+                ventana = new EjemploJPanel();
+                ventana.setVisible(true);
                 break;
                 
             case "bJScrollp":
