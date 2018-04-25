@@ -5,10 +5,47 @@
  */
 package contenedores78;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import javafx.scene.control.SplitPane;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Pablo
  */
-public class EjemploJSplit {
+public class EjemploJSplit extends JFrame{
+    
+    JPanel panelO,panelE;
+    JSplitPane panelSp;
+    
+    public EjemploJSplit(){
+    
+        setTitle("Resultado boton JSplit");
+        Container cpane = getContentPane();
+        panelO = new JPanel();
+        panelO.setBackground(Color.pink);
+        panelE = new JPanel();
+        panelE.setBackground(Color.YELLOW);
+        panelSp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, panelO, panelE);
+        panelSp.setOneTouchExpandable(true);
+        
+        
+        //cpane.add(panelC,BorderLayout.CENTER);
+        //panelC.add(panelSp);
+        cpane.add(panelSp);
+        setSize(200, 200);
+        //int ancho = panelSp.getHeight();
+        panelSp.setDividerLocation(85);
+        //panelSp.setDividerLocation(0.5);
+        setLocationRelativeTo(null);
+        
+        
+        
+        
+    }
     
 }

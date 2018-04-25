@@ -37,9 +37,11 @@ public class Contenedores78 extends JFrame implements ActionListener{
     public static void main(String[] args) {
         // TODO code application logic here
         Contenedores78 miVentana = new Contenedores78("Probando contenedores");
-        miVentana.setBounds(300, 300, 800, 300);
+        miVentana.setSize(800, 300);
         miVentana.setDefaultCloseOperation(EXIT_ON_CLOSE);
         miVentana.setVisible(true);
+        miVentana.setLocationRelativeTo(null);
+        
         
     }
 
@@ -75,10 +77,13 @@ public class Contenedores78 extends JFrame implements ActionListener{
         bJPanel.addActionListener(this);
         bJScrollp = new JButton(" Ejemplo JScroll ");
         bJScrollp.setName("bJScrollp");
+        bJScrollp.addActionListener(this);
         bJSplitp = new JButton(" Ejemplo JSplit ");
         bJSplitp.setName("bJSplitp");
+        bJSplitp.addActionListener(this);
         bJTabbedp = new JButton(" Ejemplo JTabbed ");
         bJTabbedp.setName("bJTabbedp");
+        bJTabbedp.addActionListener(this);
         
         centro.add(bJFrame);
         centro.add(bJDialog);
@@ -110,6 +115,8 @@ public class Contenedores78 extends JFrame implements ActionListener{
         sur.add(bJDeskTop);
         sur.add(bJToolBar);
         
+        
+        
     }//constructor
             @Override
     public void actionPerformed(ActionEvent e) {
@@ -134,12 +141,18 @@ public class Contenedores78 extends JFrame implements ActionListener{
                 break;
                 
             case "bJScrollp":
+                ventana = new EjemploJScroll();
+                ventana.setVisible(true);
                 break;
                 
             case "bJSplitp":
+                ventana = new EjemploJSplit();
+                ventana.setVisible(true);
                 break;
                 
             case "bJTabbedp":
+                ventana = new EjemploJTabbed();
+                ventana.setVisible(true);
                 break;
             
         }
