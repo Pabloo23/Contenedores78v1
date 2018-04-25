@@ -110,7 +110,7 @@ public class EjemploJPanel extends JFrame implements ActionListener {
         boton3.addActionListener(this);
         
         
-        panelS.setLayout(new GridLayout(2, 1,10,10));
+        panelS.setLayout(new GridLayout(2, 1,0,5));
         
         panelS.add(boton2);
         panelS.add(boton3);
