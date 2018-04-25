@@ -8,12 +8,8 @@ package contenedores78;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
@@ -79,7 +75,7 @@ public class EjemploJPanel extends JFrame implements ActionListener {
         panelCd = new JPanel();
         panelCd.setBackground(Color.green);
         panelCd.setLayout(new BoxLayout(panelCd, BoxLayout.PAGE_AXIS));
-
+        
         JPanel panelCd1 = new JPanel();
         panelCd1.setBackground(null);
         JPanel panelCd2 = new JPanel();
@@ -105,7 +101,7 @@ public class EjemploJPanel extends JFrame implements ActionListener {
     void creadorPanelSur() {
 
         panelS = new JPanel();
-
+        
         boton2 = new JButton(" Boton Visible ");
         boton2.setName("boton2");
         boton2.addActionListener(this);
